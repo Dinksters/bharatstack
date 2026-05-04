@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BHARATSTACK | National Digital Atlas</title>
+    <!-- Tailwind CSS for High-End Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & Babel for No-Install Component Logic -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card { background: rgba(15, 23, 42, 0.3); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-slate-950 text-white selection:bg-orange-500">
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        // --- DATA REGISTRY (Your Knowledge Base) ---
+        const indiaData = [
+            { name: "Kerala", aura: 999, detail: "Leader in the Human Development Index with a 94% literacy rate." },
+            { name: "Maharashtra", aura: 950, detail: "India's financial powerhouse, contributing 15% of the national GDP." },
+            { name: "Tamil Nadu", aura: 920, detail: "A global manufacturing hub and leader in renewable energy (Wind Power)." },
+            { name: "Karnataka", aura: 940, detail: "The Silicon Valley of Asia, leading India's software exports." }
+        ];
+
+        function BharatStack() {
+            const [selectedState, setSelectedState] = useState(indiaData[0]);
+
+            return (
+                <div className="min-h-screen p-6 md:p-16">
+                    {/* --- NAVIGATION --- */}
+                    <nav className="flex justify-between items-center border-b border-slate-800 pb-6">
+                        <h1 className="text-2xl font-black italic tracking-tighter">
+                            BHARAT<span className="text-orange-500">STACK</span>
+                        </h1>
+                        <div className="flex gap-4 items-center">
+                            <div className="hidden sm:block text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                                Single_File_Engine_v1.0
+                            </div>
+                            <button className="bg-orange-500 text-black px-4 py-1.5 rounded-full text-xs font-bold shadow-[0_0_15px_rgba(249,115,22,0.4)]">
+                                Ctrl + K
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16">
+                        {/* --- INTERACTIVE ATLAS --- */}
+                        <section className="space-y-6">
+                            <h2 className="text-4xl font-bold tracking-tight">Geospatial <span className="text-slate-500 text-2xl font-normal">Atlas</span></h2>
+                            <div className="aspect-square glass-card rounded-[3rem] border border-slate-800 flex items-center justify-center relative overflow-hidden group">
+                                <div className="flex flex-wrap justify-center gap-4 p-8 z-10">
+                                    {indiaData.map((state) => (
+                                        <button 
+                                            key={state.name}
+                                            onClick={() => setSelectedState(state)}
+                                            className={`px-6 py-3 rounded-xl border transition-all duration-300 ${
+                                                selectedState.name === state.name 
+                                                ? "border-orange-500 bg-orange-500/10 text-orange-500 scale-110 shadow-[0_0_20px_rgba(249,115,22,0.3)]" 
+                                                : "border-slate-800 bg-slate-900/80 text-slate-500 hover:border-slate-600"
+                                            }`}
+                                        >
+                                            {state.name}
+                                        </button>
+                                    ))}
+                                </div>
+                                <div className="absolute bottom-6 text-[10px] text-slate-700 font-mono tracking-[0.3em] uppercase">
+                                    Interactive_Node_System
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* --- KNOWLEDGE PANEL --- */}
+                        <section className="space-y-8 flex flex-col justify-center">
+                            <div className="space-y-2">
+                                <span className="text-orange-500 font-mono text-xs uppercase tracking-widest">Knowledge Node Selected</span>
+                                <h3 className="text-7xl md:text-8xl font-black tracking-tighter leading-none">{selectedState.name}</h3>
+                            </div>
+                            
+                            <div className="p-8 glass-card border border-slate-800 rounded-3xl space-y-6">
+                                <p className="text-slate-400 text-xl leading-relaxed">{selectedState.detail}</p>
+                                <div className="flex justify-between items-end pt-6 border-t border-slate-800">
+                                    <div>
+                                        <p className="text-slate-600 text-[10px] uppercase font-mono mb-1">Node Status</p>
+                                        <p className="font-bold text-green-500">Verified ✓</p>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-slate-600 text-[10px] uppercase font-mono mb-1">Aura Level</p>
+                                        <p className="text-5xl font-black text-orange-500 tracking-tighter leading-none">{selectedState.aura}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<BharatStack />);
+    </script>
+</body>
+</html>
