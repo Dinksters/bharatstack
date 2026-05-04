@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { indiaData } from './india-data.js';
+import { indiaData } from './india-data';
 
 export default function BharatStack() {
   const [selectedState, setSelectedState] = useState(indiaData[0]);
 
   return (
     <div className="bg-slate-950 text-white min-h-screen p-6 md:p-16 font-sans selection:bg-orange-500">
-      {/* 🧭 PREMIUM NAV */}
       <nav className="flex justify-between items-center border-b border-slate-800 pb-6">
         <h1 className="text-2xl font-black italic tracking-tighter">
           BHARAT<span className="text-orange-500">STACK</span>
@@ -22,11 +21,9 @@ export default function BharatStack() {
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16">
-        {/* 🗺️ INTERACTIVE MAP SECTION */}
         <section className="space-y-6">
           <h2 className="text-4xl font-bold tracking-tight">Geospatial <span className="text-slate-500 text-2xl">Atlas</span></h2>
           <div className="aspect-square bg-slate-900/50 rounded-[3rem] border border-slate-800 flex items-center justify-center relative group overflow-hidden">
-             {/* Mocking the map interaction with clickable state nodes */}
              <div className="flex flex-wrap justify-center gap-4 p-8">
                {indiaData.map((state) => (
                  <button 
@@ -34,7 +31,7 @@ export default function BharatStack() {
                     onClick={() => setSelectedState(state)}
                     className={`px-6 py-3 rounded-xl border transition-all ${
                       selectedState.name === state.name 
-                      ? "border-orange-500 bg-orange-500/10 text-orange-500 scale-110 shadow-[0_0_20px_rgba(249,115,22,0.2)]" 
+                      ? "border-orange-500 bg-orange-500/10 text-orange-500 scale-110 shadow-[0_0_20px_rgba(249,115,22,0.3)]" 
                       : "border-slate-800 bg-slate-900/80 text-slate-500 hover:border-slate-600"
                     }`}
                  >
@@ -48,7 +45,6 @@ export default function BharatStack() {
           </div>
         </section>
 
-        {/* 📊 KNOWLEDGE PANEL */}
         <section className="space-y-8 flex flex-col justify-center">
           <div className="space-y-2">
             <span className="text-orange-500 font-mono text-xs uppercase tracking-widest">Knowledge Node Selected</span>
@@ -59,7 +55,7 @@ export default function BharatStack() {
             <p className="text-slate-400 text-xl leading-relaxed">{selectedState.detail}</p>
             <div className="flex justify-between items-end pt-6 border-t border-slate-800">
                <div>
-                 <p className="text-slate-600 text-[10px] uppercase font-mono mb-1">State Authority</p>
+                 <p className="text-slate-600 text-[10px] uppercase font-mono mb-1">Status</p>
                  <p className="font-bold">Verified</p>
                </div>
                <div className="text-right">
