@@ -3,116 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BHARATSTACK | The Ultimate Registry</title>
+    <title>BHARATSTACK | National Knowledge Infrastructure</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #020617; color: #f8fafc; overflow-x: hidden; }
-        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #020617; color: #f8fafc; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
         .tab-active { border-bottom: 2px solid #f97316; color: #f97316; }
-        .glow-orange { shadow: 0 0 25px rgba(249, 115, 22, 0.15); }
-        .nav-link { transition: all 0.3s ease; cursor: pointer; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-slide { animation: slideIn 0.5s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade { animation: fadeIn 0.4s ease-out forwards; }
     </style>
 </head>
 <body>
 
-    <div class="max-w-7xl mx-auto p-4 md:p-10">
-        <!-- 🧭 TOP-TIER NAV -->
-        <nav class="flex justify-between items-center border-b border-slate-800 pb-6 sticky top-0 bg-[#020617]/80 z-50 backdrop-blur-md">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center font-black text-black shadow-lg shadow-orange-500/20">B</div>
-                <h1 class="text-2xl font-black tracking-tighter uppercase italic">Bharat<span class="text-orange-500">Stack</span></h1>
-            </div>
-            <div class="flex gap-6 items-center">
-                <div class="hidden md:flex gap-6">
-                    <span onclick="switchTab('atlas')" id="btn-atlas" class="nav-link tab-active py-2 text-sm font-bold">Atlas</span>
-                    <span onclick="switchTab('economy')" id="btn-economy" class="nav-link py-2 text-sm font-bold text-slate-500 hover:text-orange-500">Economy</span>
-                    <span onclick="switchTab('heritage')" id="btn-heritage" class="nav-link py-2 text-sm font-bold text-slate-500 hover:text-orange-500">Heritage</span>
+    <div class="max-w-7xl mx-auto p-6 md:p-12">
+        <!-- 🏛️ PROFESSIONAL NAVIGATION -->
+        <nav class="flex justify-between items-center border-b border-slate-800 pb-8 sticky top-0 bg-[#020617]/90 z-50 backdrop-blur-xl">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-orange-600 rounded-md flex items-center justify-center font-bold text-white shadow-lg">BS</div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight uppercase">Bharat<span class="text-orange-500">Stack</span></h1>
+                    <p class="text-[10px] text-slate-500 font-mono tracking-widest uppercase">Knowledge Infrastructure v2.0</p>
                 </div>
-                <div class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg font-mono text-[10px] text-orange-500">CTRL + K</div>
+            </div>
+            <div class="flex gap-8 items-center">
+                <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-wider">
+                    <button onclick="switchTab('atlas')" id="btn-atlas" class="tab-active py-2 transition-colors">Geospatial Atlas</button>
+                    <button onclick="switchTab('economy')" id="btn-economy" class="text-slate-500 py-2 hover:text-white transition-colors">Digital Economy</button>
+                    <button onclick="switchTab('heritage')" id="btn-heritage" class="text-slate-500 py-2 hover:text-white transition-colors">Historical Registry</button>
+                </div>
+                <div class="px-3 py-1 bg-slate-900 border border-slate-700 rounded font-mono text-[11px] text-slate-400">CTRL + K</div>
             </div>
         </nav>
 
-        <!-- 🗺️ TAB 1: GEOSPATIAL ATLAS (THE MAIN VIBE) -->
-        <div id="tab-atlas" class="mt-12 animate-slide">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <!-- 🌍 TAB 1: GEOSPATIAL ATLAS -->
+        <div id="tab-atlas" class="mt-16 animate-fade">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <section class="space-y-6">
-                    <h2 class="text-5xl font-black tracking-tighter leading-none">Global <br/><span class="text-slate-500 italic">Prestige Nodes</span></h2>
-                    <div class="aspect-square glass rounded-[3rem] p-10 grid grid-cols-2 gap-4 relative">
-                        <button onclick="showData('Kerala', 'High Aura: Literacy & Healthcare', 999, '94%', 'KL-NODE-01')" class="p-6 rounded-2xl border border-slate-700 bg-slate-900/50 hover:border-orange-500 transition-all hover:scale-105 font-bold">Kerala</button>
-                        <button onclick="showData('Maharashtra', 'High Aura: GDP & Finance', 950, '15%', 'MH-NODE-02')" class="p-6 rounded-2xl border border-slate-700 bg-slate-900/50 hover:border-orange-500 transition-all hover:scale-105 font-bold">Maharashtra</button>
-                        <button onclick="showData('Karnataka', 'High Aura: Tech & AI Hub', 940, '40%', 'KA-NODE-03')" class="p-6 rounded-2xl border border-slate-700 bg-slate-900/50 hover:border-orange-500 transition-all hover:scale-105 font-bold">Karnataka</button>
-                        <button onclick="showData('Gujarat', 'High Aura: Industry & Ports', 910, '20%', 'GJ-NODE-04')" class="p-6 rounded-2xl border border-slate-700 bg-slate-900/50 hover:border-orange-500 transition-all hover:scale-105 font-bold">Gujarat</button>
-                        <div class="absolute inset-0 pointer-events-none opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-transparent to-transparent"></div>
+                    <h2 class="text-4xl font-bold tracking-tight">Regional <span class="text-slate-500">Analytics</span></h2>
+                    <p class="text-slate-400 text-sm max-w-md">Select a state node to retrieve validated socio-economic metadata from the national registry.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="updateNode('Kerala', 'Social Infrastructure', 'Leader in Human Development Index and literacy rates.', '94.0%', '0.978', 'KL-REG-01')" class="p-6 text-left rounded-xl border border-slate-800 bg-slate-900/40 hover:border-orange-500/50 transition-all hover:bg-slate-900">
+                            <span class="text-[10px] font-mono text-slate-600 block mb-1">01_SOUTH</span>
+                            <span class="font-bold">Kerala</span>
+                        </button>
+                        <button onclick="updateNode('Maharashtra', 'Economic Hub', 'Financial capital contributing significantly to the national GDP.', '15.0%', '0.890', 'MH-REG-02')" class="p-6 text-left rounded-xl border border-slate-800 bg-slate-900/40 hover:border-orange-500/50 transition-all hover:bg-slate-900">
+                            <span class="text-[10px] font-mono text-slate-600 block mb-1">02_WEST</span>
+                            <span class="font-bold">Maharashtra</span>
+                        </button>
+                        <button onclick="updateNode('Karnataka', 'Technology Hub', 'Global center for software services and innovation.', '40.0%', '0.912', 'KA-REG-03')" class="p-6 text-left rounded-xl border border-slate-800 bg-slate-900/40 hover:border-orange-500/50 transition-all hover:bg-slate-900">
+                            <span class="text-[10px] font-mono text-slate-600 block mb-1">03_SOUTH</span>
+                            <span class="font-bold">Karnataka</span>
+                        </button>
+                        <button onclick="updateNode('Gujarat', 'Industrial Hub', 'Leader in manufacturing, logistics, and renewable energy.', '20.0%', '0.870', 'GJ-REG-04')" class="p-6 text-left rounded-xl border border-slate-800 bg-slate-900/40 hover:border-orange-500/50 transition-all hover:bg-slate-900">
+                            <span class="text-[10px] font-mono text-slate-600 block mb-1">04_WEST</span>
+                            <span class="font-bold">Gujarat</span>
+                        </button>
                     </div>
                 </section>
 
-                <section class="p-10 glass rounded-[3rem] glow-orange flex flex-col justify-between">
+                <section class="p-10 glass rounded-3xl flex flex-col justify-between border-slate-800">
                     <div class="space-y-6">
                         <div class="flex justify-between items-start">
-                            <div>
-                                <span id="node-tag" class="text-orange-500 font-mono text-[10px] uppercase tracking-[0.3em]">Registry_Secure_Active</span>
-                                <h3 id="node-name" class="text-7xl font-black tracking-tighter leading-none mt-2">Kerala</h3>
+                            <div class="space-y-1">
+                                <span id="node-reg" class="font-mono text-[10px] text-orange-500 uppercase tracking-widest">KL-REG-01</span>
+                                <h3 id="node-name" class="text-6xl font-black tracking-tighter">Kerala</h3>
+                                <p id="node-tag" class="text-sm font-semibold text-slate-400">Social Infrastructure</p>
                             </div>
                             <div class="text-right">
-                                <p class="text-slate-600 font-mono text-[10px] uppercase">Aura_Lvl</p>
-                                <p id="node-aura" class="text-5xl font-black text-orange-500 tracking-tighter">999</p>
+                                <p class="text-[10px] font-mono text-slate-600 uppercase">HDI_Index</p>
+                                <p id="node-index" class="text-3xl font-bold text-white">0.978</p>
                             </div>
                         </div>
-                        <p id="node-detail" class="text-slate-400 text-xl leading-relaxed">High Aura: Literacy & Healthcare. Leader in the Human Development Index with robust infrastructure.</p>
+                        <p id="node-detail" class="text-slate-300 leading-relaxed">Leader in Human Development Index and literacy rates.</p>
                     </div>
 
-                    <div class="space-y-4 pt-10">
-                        <div class="flex justify-between text-xs font-mono text-slate-500">
-                            <span>REGISTRY_STABILITY</span>
-                            <span id="node-stat-val">94%</span>
+                    <div class="space-y-4 mt-8 pt-8 border-t border-slate-800">
+                        <div class="flex justify-between text-[11px] font-mono text-slate-500">
+                            <span>DATA_STABILITY</span>
+                            <span id="node-percent">94.0%</span>
                         </div>
-                        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                            <div id="node-progress" class="bg-orange-500 h-full w-[94%] transition-all duration-1000"></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                            <div id="node-progress" class="bg-orange-600 h-full w-[94%] transition-all duration-700"></div>
                         </div>
-                        <div class="flex justify-between items-center pt-4 border-t border-slate-800">
-                            <span class="text-[10px] font-mono text-green-500">● NODE_VERIFIED</span>
-                            <span id="node-id" class="text-[10px] font-mono text-slate-600 tracking-widest">KL-NODE-01</span>
+                        <div class="flex justify-between items-center text-[10px] font-mono">
+                            <span class="text-green-500 tracking-widest uppercase">● Registry_Synced</span>
+                            <span class="text-slate-600 uppercase">SSL_Verified_Node</span>
                         </div>
                     </div>
                 </section>
             </div>
         </div>
 
-        <!-- 📈 TAB 2: DIGITAL ECONOMY (THE HUSTLE) -->
-        <div id="tab-economy" class="hidden mt-12 animate-slide space-y-10">
-            <h2 class="text-5xl font-black text-center tracking-tighter">The Digital <span class="text-orange-500 italic">Flex</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-10 glass rounded-[2.5rem] border-t-4 border-t-orange-500 space-y-4">
-                    <h4 class="font-black text-2xl uppercase italic">UPI Main</h4>
-                    <p class="text-slate-500 text-sm">Processing billions in real-time. This isn't just payments, it's a lifestyle.</p>
-                    <div class="text-orange-500 font-black text-4xl tracking-tighter">46% <span class="text-xs text-slate-600 uppercase font-mono tracking-widest">Global Share</span></div>
+        <!-- 💹 TAB 2: DIGITAL ECONOMY -->
+        <div id="tab-economy" class="hidden mt-16 animate-fade space-y-10">
+            <h2 class="text-4xl font-bold tracking-tight text-center">Digital <span class="text-orange-500">Infrastructure</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 glass rounded-2xl space-y-4 border-l-4 border-l-orange-600">
+                    <h4 class="font-bold text-lg">Unified Payments (UPI)</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Real-time payment system facilitating instant peer-to-peer and merchant transactions.</p>
+                    <div class="pt-4 font-bold text-3xl">46% <span class="text-xs font-normal text-slate-600 uppercase">Global Share</span></div>
                 </div>
-                <div class="p-10 glass rounded-[2.5rem] space-y-4">
-                    <h4 class="font-black text-2xl uppercase italic">Aadhaar Max</h4>
-                    <p class="text-slate-500 text-sm">Biometric identity that keeps the whole system locked in.</p>
-                    <div class="text-white font-black text-4xl tracking-tighter">1.3B+ <span class="text-xs text-slate-600 uppercase font-mono tracking-widest">Nodes Connected</span></div>
+                <div class="p-8 glass rounded-2xl space-y-4">
+                    <h4 class="font-bold text-lg">Digital Identity (Aadhaar)</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Strategic digital identity layer enabling paperless authentication for 1.3+ billion residents.</p>
+                    <div class="pt-4 font-bold text-3xl">1.3B+ <span class="text-xs font-normal text-slate-600 uppercase">Records</span></div>
                 </div>
-                <div class="p-10 glass rounded-[2.5rem] space-y-4">
-                    <h4 class="font-black text-2xl uppercase italic">Data Aura</h4>
-                    <p class="text-slate-500 text-sm">Most affordable mobile data on the planet. Streaming 24/7.</p>
-                    <div class="text-orange-500 font-black text-4xl tracking-tighter">Rank 1 <span class="text-xs text-slate-600 uppercase font-mono tracking-widest">Affordability</span></div>
+                <div class="p-8 glass rounded-2xl space-y-4">
+                    <h4 class="font-bold text-lg">Data Democratization</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Globally leading in mobile data consumption with the most competitive data pricing models.</p>
+                    <div class="pt-4 font-bold text-3xl">#1 <span class="text-xs font-normal text-slate-600 uppercase">Accessibility</span></div>
                 </div>
             </div>
         </div>
 
-        <!-- 🏺 TAB 3: HERITAGE (THE LEGACY) -->
-        <div id="tab-heritage" class="hidden mt-12 animate-slide">
-            <div class="p-20 glass rounded-[4rem] text-center space-y-8 relative overflow-hidden">
-                <div class="absolute -top-20 -left-20 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
-                <h2 class="text-7xl font-black tracking-tighter uppercase italic">Legacy <span class="text-slate-500">Maxxing</span></h2>
-                <p class="max-w-2xl mx-auto text-slate-400 text-lg">5,000 years of civilization being mirror-synced into the cloud. From Vedic wisdom to deep-tech infrastructure.</p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <span class="px-6 py-2 glass rounded-full text-xs font-bold border border-slate-700">Ancient Architecture</span>
-                    <span class="px-6 py-2 glass rounded-full text-xs font-bold border border-orange-500/50 text-orange-500">Digital Renaissance</span>
-                    <span class="px-6 py-2 glass rounded-full text-xs font-bold border border-slate-700">Linguistic Diversity</span>
+        <!-- 🏛️ TAB 3: HISTORICAL REGISTRY -->
+        <div id="tab-heritage" class="hidden mt-16 animate-fade">
+            <div class="p-16 glass rounded-[2.5rem] border-slate-800 text-center space-y-8">
+                <h2 class="text-5xl font-black tracking-tight italic">Civilizational <span class="text-slate-500">Continuity</span></h2>
+                <p class="max-w-2xl mx-auto text-slate-400 leading-relaxed">A digital preservation of India's 5,000-year history, spanning from ancient urban planning to modern administrative evolution.</p>
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <span class="px-5 py-2 rounded-full border border-slate-700 text-[11px] font-mono font-bold">Harappan_Urbanism</span>
+                    <span class="px-5 py-2 rounded-full border border-slate-700 text-[11px] font-mono font-bold">Classical_Period</span>
+                    <span class="px-5 py-2 rounded-full border border-slate-700 text-[11px] font-mono font-bold">Post_Colonial_Structure</span>
                 </div>
             </div>
         </div>
@@ -123,9 +137,8 @@
             const tabs = ['atlas', 'economy', 'heritage'];
             tabs.forEach(t => {
                 document.getElementById(`tab-${t}`).classList.add('hidden');
-                const btn = document.getElementById(`btn-${t}`);
-                btn.classList.remove('tab-active', 'text-orange-500');
-                btn.classList.add('text-slate-500');
+                document.getElementById(`btn-${t}`).classList.remove('tab-active', 'text-orange-500');
+                document.getElementById(`btn-${t}`).classList.add('text-slate-500');
             });
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
             const activeBtn = document.getElementById(`btn-${tabId}`);
@@ -133,16 +146,17 @@
             activeBtn.classList.remove('text-slate-500');
         }
 
-        function showData(name, detail, aura, stat, nodeId) {
+        function updateNode(name, tag, detail, percent, index, reg) {
             document.getElementById('node-name').innerText = name;
+            document.getElementById('node-tag').innerText = tag;
             document.getElementById('node-detail').innerText = detail;
-            document.getElementById('node-aura').innerText = aura;
-            document.getElementById('node-stat-val').innerText = stat;
-            document.getElementById('node-id').innerText = nodeId;
+            document.getElementById('node-percent').innerText = percent;
+            document.getElementById('node-index').innerText = index;
+            document.getElementById('node-reg').innerText = reg;
             
             const progress = document.getElementById('node-progress');
             progress.style.width = '0%';
-            setTimeout(() => { progress.style.width = stat; }, 100);
+            setTimeout(() => { progress.style.width = percent; }, 50);
         }
     </script>
 </body>
